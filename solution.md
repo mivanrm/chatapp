@@ -169,15 +169,15 @@ func main() {
 
 ```
 ## Tools
-Git: 5
-Redis:4
-VSCode:4
-Linux:4
-AWS
--EC2:4
--Lambda:3
--RDS:3
--Cloudwatch:3
--S3:3
-Unit testing:5
+Git: 5\
+Redis:4\
+VSCode:4\
+Linux:4\
+AWS\
+-EC2:4\
+-Lambda:3\
+-RDS:3\
+-Cloudwatch:3\
+-S3:3\
+Unit testing:5\
 Kanban boards4
