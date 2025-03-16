@@ -49,23 +49,91 @@ const sendMessage = () => {
 </script>
 
 <template>
-    <div v-if="!isConnected">
-        <input v-model="username" placeholder="Enter your Username" />
+    <div v-if="!isConnected" class="login">
+        <input v-model="username" placeholder="Enter your Username" v-on:keyup.enter="connectToChat" />
         <button @click="connectToChat">Join Chat</button>
-
     </div>
-    <div v-else>
-        <div>
-            <div>
-                <div v-for="(msg, index) in messages" :key="index">
-                    <span>{{ msg.user }}</span>
-                    <p>{{ msg.text }}</p>
+
+    <template v-else>
+        <div class="chat-container">
+            <div class="messages">
+                <div v-for="(msg, index) in messages" :key="index"
+                    :class="['message', { 'message-right': msg.user === username }]">
+                    <span class="username">{{ msg.user }}</span>
+                    <p class="text-bubble">{{ msg.text }}</p>
                 </div>
             </div>
-            <div>
-                <input v-model="newMessage" placeholder="Enter your message" />
+            <div class="input-box">
+                <input v-model="newMessage" placeholder="Enter your message" v-on:keyup.enter="sendMessage" />
                 <button @click="sendMessage">Send</button>
             </div>
         </div>
-    </div>
+    </template>
 </template>
+
+<style scoped>
+.username {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.message {
+    padding: 10px;
+    text-align: left;
+    color: black;
+    margin: 10px;
+    max-width: 70%;
+}
+
+.message-right {
+    text-align: right;
+    margin-left: auto;
+}
+
+.text-bubble {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.message-right .text-bubble {
+    background: #25d366;
+    color: white;
+}
+
+.input-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: white;
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.input-box input {
+    flex: 1;
+}
+
+.chat-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+</style>
