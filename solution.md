@@ -102,7 +102,7 @@ getData();
 3. Create a real-time chat between two windows; using web sockets, vuejs and typescript.  
 websocket: https://github.com/mivanrm/chatapp-backend
 frontend : https://github.com/mivanrm/chatapp
-
+deployed at http://3.106.212.164:3001/
 
 # Vue.js
 1. Explain Vue.js reactivity and common issues when tracking changes.\
